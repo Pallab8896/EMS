@@ -131,6 +131,6 @@ export class SettingsComponent implements OnInit {
   }
 
   showToast() {
-    $('#element').toast('show');
+    $('#toast').toast('show');
   }
 }

@@ -16,6 +16,7 @@ export class ExpenseTableComponent implements OnInit {
   allExpenses = [];
   index = 1;
   currentPage = 1;
+  message;
 
   constructor(private apiService: ApiService) {}
 
@@ -50,7 +51,6 @@ export class ExpenseTableComponent implements OnInit {
   addExpense() {
     this.isNew = true;
     this.addEditForm.reset();
-    console.log(this.addEditForm.value);
     $('#expenseModal').modal('show');
   }
 
@@ -71,7 +71,8 @@ export class ExpenseTableComponent implements OnInit {
     };
     this.apiService.deleteExpense(deleteData).subscribe(
       (response: any) => {
-        console.log(response);
+        this.message = response.message;
+        this.showToast();
         this.getAllExpenses();
       },
       (err: any) => {
@@ -86,7 +87,8 @@ export class ExpenseTableComponent implements OnInit {
     };
     this.apiService.undoDeleteExpense(undoDeleteData).subscribe(
       (response: any) => {
-        console.log(response);
+        this.message = response.message;
+        this.showToast();
         this.getAllExpenses();
       },
       (err: any) => {
@@ -106,7 +108,8 @@ export class ExpenseTableComponent implements OnInit {
         };
         this.apiService.addExpense(addData).subscribe(
           (response: any) => {
-            console.log(response);
+            this.message = response.message;
+            this.showToast();
             this.getAllExpenses();
           },
           (err: any) => {
@@ -123,7 +126,8 @@ export class ExpenseTableComponent implements OnInit {
         };
         this.apiService.updateExpense(editData).subscribe(
           (response: any) => {
-            console.log(response);
+            this.message = response.message;
+            this.showToast();
             this.getAllExpenses();
           },
           (err: any) => {
@@ -132,5 +136,9 @@ export class ExpenseTableComponent implements OnInit {
         );
       }
     }
+  }
+
+  showToast() {
+    $('#toast').toast('show');
   }
 }

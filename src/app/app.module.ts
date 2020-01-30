@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
-import { SummaryComponent } from './home/summary/summary.component';
 import { ExpenseTableComponent } from './home/expense-table/expense-table.component';
 import { ApiService } from './shared/services/api-service.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -19,7 +18,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SideNavComponent,
     HomeComponent,
     SettingsComponent,
-    SummaryComponent,
     ExpenseTableComponent
   ],
   imports: [
